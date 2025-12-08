@@ -1,41 +1,40 @@
 return {
 
-'sainnhe/gruvbox-material',
+  "sainnhe/gruvbox-material",
 
-lazy = false,
+  lazy = false,
 
-priority = 1000,
+  priority = 1000,
 
-config = function()
+  config = function()
+    -- Optionally configure and load the colorscheme
 
--- Optionally configure and load the colorscheme
+    -- directly inside the plugin declaration.
 
--- directly inside the plugin declaration.
+    vim.g.gruvbox_material_enable_italic = false
 
-vim.g.gruvbox_material_enable_italic = false
+    -- pilih palette: pakai warna original gruvbox
 
-  
+    vim.g.gruvbox_material_foreground = "original"
 
--- pilih palette: pakai warna original gruvbox
+    -- optional: level kontras background
 
-vim.g.gruvbox_material_foreground = "original"
-  
+    -- hard | medium | soft (default: medium)
 
--- optional: level kontras background
+    vim.g.gruvbox_material_background = "soft"
 
--- hard | medium | soft (default: medium)
+    vim.g.gruvbox_material_float_style = "dim"
 
-vim.g.gruvbox_material_background = "soft"
+    -- dark / light variant
 
-  
+    vim.o.background = "dark"
+    -- apply colorscheme
 
--- dark / light variant
+    vim.cmd.colorscheme("gruvbox-material")
 
-vim.o.background = "dark"
--- apply colorscheme
-
-vim.cmd.colorscheme('gruvbox-material')
-
-end
-
+    --    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    --    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    --    vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+    --    vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
+  end,
 }

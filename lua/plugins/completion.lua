@@ -1,4 +1,5 @@
 return {
+
   "saghen/blink.cmp",
   -- optional: provides snippets for the snippet source
   dependencies = { "rafamadriz/friendly-snippets" },
@@ -39,7 +40,7 @@ return {
 
       -- Tab untuk navigate snippet placeholders (LazyVim style)
       ["<Tab>"] = {
-        function(cmp)
+        function()
           if vim.snippet.active({ direction = 1 }) then
             vim.schedule(function()
               vim.snippet.jump(1)
@@ -50,7 +51,7 @@ return {
         "fallback",
       },
       ["<S-Tab>"] = {
-        function(cmp)
+        function()
           if vim.snippet.active({ direction = -1 }) then
             vim.schedule(function()
               vim.snippet.jump(-1)
@@ -69,9 +70,9 @@ return {
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
-      nerd_font_variant = "mono",
+      --nerd_font_variant = "mono",
       -- LazyVim uses false, letting theme handle highlights
-      use_nvim_cmp_as_default = false,
+      --use_nvim_cmp_as_default = false,
     },
 
     -- LazyVim configuration for completion
@@ -83,13 +84,19 @@ return {
         },
       },
       menu = {
+
         border = "rounded",
         max_height = 15,
         draw = {
           -- Enable treesitter highlighting for LSP items (LazyVim style)
           treesitter = { "lsp" },
-          columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" } },
+          columns = {
+            { "kind_icon" },
+            { "label", "label_description", gap = 1 },
+            { "kind", "source_name", gap = 1 },
+          },
         },
+
         winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
       },
       documentation = {
@@ -129,8 +136,11 @@ return {
       },
       window = {
         border = "rounded",
-        max_width = 80,
-        max_height = 15,
+        --   max_width = 80,
+        --   max_height = 15,
+        winblend = 0,
+        winhighlight = "Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder,Search:None",
+        scrollbar = true,
       },
     },
 
