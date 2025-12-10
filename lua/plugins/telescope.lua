@@ -8,8 +8,18 @@ return {
         defaults = {
 
           dynamic_preview_title = true, -- show filename in preview title
-          results_title = false, -- hide results title
+          results_title = false,        -- hide results title
           sorting_strategy = "ascending",
+          -- Custom path display: filename first, then path (smaller/dimmed)
+          path_display = function(opts, path)
+            local tail = require("telescope.utils").path_tail(path)
+            local dir = vim.fn.fnamemodify(path, ":h")
+            if dir == "." then
+              return tail
+            end
+            -- Filename bold, path dimmed with smaller appearance
+            return string.format("%s  (%s/%s)", tail, dir, tail)
+          end,
         },
 
         extensions = {
@@ -34,7 +44,7 @@ return {
               prompt_position = "top", -- prompt di atas
               -- height = 0.9,
               --layout_strategyheight = 0.9, -- lebih tinggi
-              mirror = false, -- preview di bawah
+              mirror = false,      -- preview di bawah
               -- anchor = "CENTER", -- posisi dari atas (North)
               preview_width = 0.7, -- preview 50% dari tinggi total
               -- results_height = 8, -- hasil search hanya 8 baris (lebih kecil)
@@ -88,16 +98,48 @@ return {
             end,
           },
           live_grep = {
-            -- theme = "ivy",
-            layout_strategy = "horizontal",
+            theme = "ivy",
+            -- layout_strategy = "horizontal",
 
-            layout_config = {
+            -- layout_config = {
+            --
+            --   prompt_position = "top",
+            --   mirror = false,
+            --   preview_width = 0.75,
+            --   height = 0.8,
+            -- },
+            -- Custom display: show matched text first, then path
+            entry_maker = function(entry)
+              local displayer = require("telescope.pickers.entry_display").create({
+                separator = " ",
+                items = {
+                  { width = 50 },       -- matched text
+                  { remaining = true }, -- path and line number
+                },
+              })
 
-              prompt_position = "top",
-              mirror = false,
-              preview_width = 0.75,
-              height = 0.8,
-            },
+              local make_entry = require("telescope.make_entry")
+              local base_entry = make_entry.gen_from_vimgrep({})(entry)
+
+              if not base_entry then
+                return nil
+              end
+
+              base_entry.display = function(entry_display)
+                local filename = require("telescope.utils").path_tail(entry_display.filename)
+
+                local full_path = entry_display.filename or ""
+                local text = entry_display.text or ""
+                local lnum = entry_display.lnum or ""
+
+                return displayer({
+                  text:gsub("^%s+", ""), -- trim leading whitespace
+                  { string.format("%s:%s (%s)", filename, lnum, full_path), "TelescopeResultsComment" },
+                })
+              end
+
+              return base_entry
+            end,
             attach_mappings = function(prompt_bufnr, map)
               local actions = require("telescope.actions")
               local action_state = require("telescope.actions.state")
@@ -158,7 +200,7 @@ return {
               prompt_position = "top", -- prompt di atas
               -- height = 0.9,
               --layout_strategyheight = 0.9, -- lebih tinggi
-              mirror = false, -- preview di bawah
+              mirror = false,      -- preview di bawah
               -- anchor = "CENTER", -- posisi dari atas (North)
               preview_width = 0.7, -- preview 50% dari tinggi total
               -- results_height = 8, -- hasil search hanya 8 baris (lebih kecil)

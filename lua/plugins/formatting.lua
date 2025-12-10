@@ -20,7 +20,7 @@ return {
         graphql = { "prettier" },
         lua = { "stylua" },
         python = { "isort", "black" },
-        dart = { "dart_format", "dcm_format" },
+        dart = { "dart_format" },
         java = { "google_java_format" },
       },
       format_on_save = {

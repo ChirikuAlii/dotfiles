@@ -1,23 +1,4 @@
 return {
-  {
-    "mason-org/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-
-  {
-    "mason-org/mason-lspconfig.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "ts_ls",
-        },
-      })
-    end,
-  },
 
   {
     "neovim/nvim-lspconfig",
@@ -48,6 +29,27 @@ return {
         }),
       })
 
+      -- Setup dartls (Dart/Flutter LSP)
+      vim.lsp.config("dartls", {
+        cmd = { "dart", "language-server", "--protocol=lsp" },
+        filetypes = { "dart" },
+        init_options = {
+          onlyAnalyzeProjectsWithOpenFiles = false,
+          suggestFromUnimportedLibraries = true,
+          closingLabels = true,
+          outline = true,
+          flutterOutline = true,
+        },
+        settings = {
+          dart = {
+            completeFunctionCalls = true,
+            showTodos = true,
+            enableSnippets = true,
+            updateImportsOnRename = true,
+          },
+        },
+      })
+
       -- Setup lua_ls dengan settings khusus
       vim.lsp.config("lua_ls", {
         settings = {
@@ -76,6 +78,7 @@ return {
       -- Enable LSP servers
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("ts_ls")
+      vim.lsp.enable("dartls")
 
       -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
