@@ -1,5 +1,4 @@
 return {
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -14,44 +13,21 @@ return {
       },
     },
     config = function()
-      -- Get blink.cmp capabilities
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-      -- Setup global LSP config dengan capabilities untuk semua server
-      vim.lsp.config("*", {
-        capabilities = vim.tbl_deep_extend("force", capabilities, {
-          workspace = {
-            fileOperations = {
-              didRename = true,
-              willRename = true,
-            },
-          },
-        }),
-      })
-
-      -- Setup dartls (Dart/Flutter LSP)
-      vim.lsp.config("dartls", {
-        cmd = { "dart", "language-server", "--protocol=lsp" },
-        filetypes = { "dart" },
-        init_options = {
-          onlyAnalyzeProjectsWithOpenFiles = false,
-          suggestFromUnimportedLibraries = true,
-          closingLabels = true,
-          outline = true,
-          flutterOutline = true,
-        },
-        settings = {
-          dart = {
-            completeFunctionCalls = true,
-            showTodos = true,
-            enableSnippets = true,
-            updateImportsOnRename = true,
+      -- Extend capabilities dengan file operations
+      capabilities = vim.tbl_deep_extend("force", capabilities, {
+        workspace = {
+          fileOperations = {
+            didRename = true,
+            willRename = true,
           },
         },
       })
 
-      -- Setup lua_ls dengan settings khusus
-      vim.lsp.config("lua_ls", {
+      -- Setup lua_ls
+      require("lspconfig").lua_ls.setup({
+        capabilities = capabilities,
         settings = {
           Lua = {
             workspace = {
@@ -75,10 +51,36 @@ return {
         },
       })
 
-      -- Enable LSP servers
-      vim.lsp.enable("lua_ls")
-      vim.lsp.enable("ts_ls")
-      vim.lsp.enable("dartls")
+      -- Setup ts_ls untuk TypeScript/JavaScript
+      require("lspconfig").ts_ls.setup({
+        capabilities = capabilities,
+        root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+        single_file_support = false,
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+        },
+      })
 
       -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
