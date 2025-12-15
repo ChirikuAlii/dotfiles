@@ -1,10 +1,15 @@
-# Dotfiles
-
+## Dotfiles
 A personal collection of configuration files (dotfiles) for my development environment. This repository contains setups for the following productivity tools:
 
 - Neovim: The main text editor (using Lua configuration).
 - Tmux: A terminal multiplexer for session management.
 - Ghostty: A modern terminal emulator (cross-platform).
+
+##### Development Note 
+This dotfiles collection is a constantly evolving project. As the development area expands, this configuration will be updated and improved.
+
+##### Next To Do 
+Create installation scripts for Software Development Kits (SDKs) like Java, Flutter, and other tools to simplify onboarding on new machines.
 
 ## Repository Structure
 
