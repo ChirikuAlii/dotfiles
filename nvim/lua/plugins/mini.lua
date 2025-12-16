@@ -12,7 +12,7 @@ return {
       require("mini.snippets").setup()
 
       --ini jump ke
-      require("mini.jump").setup()
+      -- require("mini.jump").setup()
 
       -- indent scope bisa select sesuai scope pakai ke visual mode -> ai atau ii
       require("mini.indentscope").setup()

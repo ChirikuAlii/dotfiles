@@ -6,9 +6,9 @@ return {
     build = ":TSUpdate",
     indent = {
       enable = true,
-      disable = {
-        "dart"
-      },
+      -- disable = {
+      --   "dart"
+      -- },
     },
     config = function()
       local configs = require("nvim-treesitter.configs")
