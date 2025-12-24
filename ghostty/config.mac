@@ -18,7 +18,9 @@ font-style-bold-italic = ExtraBoldBold Italic
 font-size = 15
 font-feature = +liga
 
-
+custom-shader-animation = always
+shell-integration-features = no-cursor
+custom-shader = "shaders/cursor_warp.glsl"
 
 keybind = ctrl+0=unbind
 keybind = ctrl+1=unbind
