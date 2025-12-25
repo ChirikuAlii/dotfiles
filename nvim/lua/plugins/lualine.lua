@@ -9,7 +9,7 @@ return {
       -- },
 
       sections = {
-        lualine_x = { "lsp_status", "encoding", "filetype" },
+        lualine_x = { "branch", "lsp_status", "encoding", "filetype" },
         lualine_a = { "mode" },
         lualine_b = {
           { "tabs", tab_max_length = 500, path = 3, mode = 1, use_mode_colors = true },
@@ -27,16 +27,18 @@ return {
       -- hanya aktif ketika buffer aktif dan satu tempat saja
       -- tabline = {
       --   lualine_a = { "filename" },
+      --   lualine_b = { { "tabs", tab_max_length = 500, path = 3, mode = 1, use_mode_colors = true } },
       -- },
 
       -- hanya aktif ketika buffer selalu aktif keduanya diatas buffer
       winbar = {
         lualine_a = { "filename" },
-        -- lualine_a = { { "tabs", tab_max_length = 500, path = 1, mode = 1, use_mode_colors = true } },
+        -- lualine_c = { { "tabs", tab_max_length = 500, path = 1, mode = 1, use_mode_colors = true } },
       },
 
       inactive_winbar = {
-        lualine_a = { "filename" },
+        lualine_c = { "filename" },
+        -- lualine_c = { { "tabs", tab_max_length = 500, path = 1, mode = 1, use_mode_colors = true } },
       },
     })
   end,
