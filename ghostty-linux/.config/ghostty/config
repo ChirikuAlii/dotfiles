@@ -1,7 +1,6 @@
 
 theme = Gruvbox Dark 
 #window-theme = auto
-
 macos-option-as-alt = true
 background-blur = true
 background= "#2C2A29"
@@ -40,4 +39,4 @@ keybind = super+2=unbind
 keybind = super+3=unbind
 keybind = super+4=unbind
 
-font-size = 13
+font-size = 11
