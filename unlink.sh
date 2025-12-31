@@ -1,15 +1,10 @@
 #!/bin/zsh
-
-set e
-export DOT="$HOME/1.Code/2.Areas/dotfiles"
-cd "$DOT" || exit 1
+set -e
 
 
 # daftar folder yang di-skip
 SKIP_PACKAGES=(
   .git
-  ghostty-mac
-  ghostty-linux
 )
 
 should_skip() {
@@ -32,10 +27,7 @@ for pkg in */; do
   fi
 
   echo "📦 stow: $pkg"
-  stow -t "$HOME" "$pkg"
+  stow -D -t "$HOME" "$pkg"
 done
 
-
-echo "✅ setup done"
-sh "$DOT/setup-ghostty.sh"
 

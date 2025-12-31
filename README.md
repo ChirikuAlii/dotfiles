@@ -4,19 +4,13 @@ A personal collection of configuration files (dotfiles) for my development envir
 - Neovim: The main text editor (using Lua configuration).
 - Tmux: A terminal multiplexer for session management.
 - Ghostty: A modern terminal emulator (cross-platform).
+- Tmuxp : Plugin tmux to handle session and create template each session using yaml
 
-##### Development Note 
+#### Development Note 
 This dotfiles collection is a constantly evolving project. As the development area expands, this configuration will be updated and improved.
 
-##### Next To Do 
+#### Next To Do 
 Create installation scripts for Software Development Kits (SDKs) like Java, Flutter, and other tools to simplify onboarding on new machines.
-
-## Repository Structure
-
-- `nvim/`: The Neovim configuration folder (will be linked to `~/.config/nvim`).
-- `tmux/`: Contains `.tmux.conf` (will be linked to `~/.tmux.conf`).
-- `ghostty/`: Ghostty configuration for macOS and Linux.
-- `setup.sh`: The main installation script.
 
 ## How to Use
 
@@ -33,7 +27,7 @@ cd ~/1.Code/2.Areas/dotfiles
 
 *If you saved it to a different location, please edit the `export DOT="..."` line in the `setup.sh` file to match your folder location.*
 
-### 2. Installation (Symlink)
+### 2. Installation (Stow)
 
 Run the `setup.sh` script to apply the configuration:
 
@@ -42,6 +36,7 @@ sh setup.sh
 ```
 
 This script will do the following:
-1. Create a symbolic link for **Neovim** in `~/.config/nvim`.
-2. Create a symbolic link for **Tmux** in `~/.tmux.conf`.
-3. Run the automatic setup for **Ghostty** (detects whether you're using macOS or Linux and selects the appropriate config).
+1. Create a stow for **Neovim** in `~/.config/nvim`.
+2. Create a stow for **Tmux** in `~/.tmux.conf`.
+3. Run the setup for **Ghostty** (Selects the appropriate config whether you're using macOS or Linux).
+4. Create a stow for **Tmuxp** in `~/.tmuxp`

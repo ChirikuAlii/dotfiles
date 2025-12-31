@@ -141,6 +141,49 @@ local theme_find_buffers = function()
 			local actions = require("telescope.actions")
 			local action_state = require("telescope.actions.state")
 
+			-- Tab: toggle selection (multi-select)
+			map("n", "<Tab>", function()
+				actions.toggle_selection(prompt_bufnr)
+				actions.move_selection_next(prompt_bufnr)
+			end)
+
+			map("n", "<S-Tab>", function()
+				actions.toggle_selection(prompt_bufnr)
+				actions.move_selection_previous(prompt_bufnr)
+			end)
+
+			-- dd: delete buffer(s) - single or multi-select
+			map("n", "dd", function()
+				local picker = action_state.get_current_picker(prompt_bufnr)
+				local multi_selections = picker:get_multi_selection()
+
+				-- Close telescope first
+				actions.close(prompt_bufnr)
+
+				-- Jika ada multi selection, delete semua yang dipilih
+				if #multi_selections > 0 then
+					for _, entry in ipairs(multi_selections) do
+						local bufnr = entry.bufnr
+						if vim.api.nvim_buf_is_valid(bufnr) then
+							pcall(function()
+								vim.api.nvim_buf_delete(bufnr, { force = false })
+							end)
+						end
+					end
+				else
+					-- Jika tidak ada multi selection, delete buffer yang sedang dipilih
+					local selected_entry = action_state.get_selected_entry()
+					if selected_entry then
+						local bufnr = selected_entry.bufnr
+						if vim.api.nvim_buf_is_valid(bufnr) then
+							pcall(function()
+								vim.api.nvim_buf_delete(bufnr, { force = false })
+							end)
+						end
+					end
+				end
+			end)
+
 			-- Enter: buka buffer normal
 			map("n", "<CR>", function()
 				local selected_entry = action_state.get_selected_entry()

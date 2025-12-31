@@ -6,9 +6,12 @@ return {
     config = function()
       require("telescope").setup({
         defaults = {
-
+          hidden = true,
+          file_ignore_patterns = {
+            "^%.git",
+          },
           dynamic_preview_title = true, -- show filename in preview title
-          results_title = false,        -- hide results title
+          results_title = false, -- hide results title
           sorting_strategy = "ascending",
           -- Custom path display: filename first, then path (smaller/dimmed)
           path_display = function(opts, path)
@@ -44,7 +47,7 @@ return {
               prompt_position = "top", -- prompt di atas
               -- height = 0.9,
               --layout_strategyheight = 0.9, -- lebih tinggi
-              mirror = false,      -- preview di bawah
+              mirror = false, -- preview di bawah
               -- anchor = "CENTER", -- posisi dari atas (North)
               preview_width = 0.7, -- preview 50% dari tinggi total
               -- results_height = 8, -- hasil search hanya 8 baris (lebih kecil)
@@ -53,6 +56,18 @@ return {
             attach_mappings = function(prompt_bufnr, map)
               local actions = require("telescope.actions")
               local action_state = require("telescope.actions.state")
+
+              -- dd: delete buffer (barbar integration)
+              map("n", "dd", function()
+                local selected_entry = action_state.get_selected_entry()
+                local bufnr = selected_entry.bufnr
+                
+                -- Close telescope first
+                actions.close(prompt_bufnr)
+                
+                -- Gunakan barbar command untuk close buffer
+                vim.cmd("BufferClose " .. bufnr)
+              end)
 
               -- Enter: buka file normal
               map("n", "<CR>", function()
@@ -99,6 +114,13 @@ return {
           },
           live_grep = {
             theme = "ivy",
+            additional_args = function()
+              return { "--hidden" } -- Flag untuk ripgrep
+            end,
+            file_ignore_patterns = {
+              "^%.git",
+            },
+            hidden = true,
             -- layout_strategy = "horizontal",
 
             -- layout_config = {
@@ -113,7 +135,7 @@ return {
               local displayer = require("telescope.pickers.entry_display").create({
                 separator = " ",
                 items = {
-                  { width = 50 },       -- matched text
+                  { width = 50 }, -- matched text
                   { remaining = true }, -- path and line number
                 },
               })
@@ -189,6 +211,10 @@ return {
           },
           find_files = {
 
+            file_ignore_patterns = {
+              "^%.git",
+            },
+            hidden = true,
             -- theme = "dropdown",
             layout_strategy = "horizontal",
 
@@ -200,7 +226,7 @@ return {
               prompt_position = "top", -- prompt di atas
               -- height = 0.9,
               --layout_strategyheight = 0.9, -- lebih tinggi
-              mirror = false,      -- preview di bawah
+              mirror = false, -- preview di bawah
               -- anchor = "CENTER", -- posisi dari atas (North)
               preview_width = 0.7, -- preview 50% dari tinggi total
               -- results_height = 8, -- hasil search hanya 8 baris (lebih kecil)

@@ -54,7 +54,6 @@ return {
       -- Setup ts_ls untuk TypeScript/JavaScript
       require("lspconfig").ts_ls.setup({
         capabilities = capabilities,
-        root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
         single_file_support = false,
         settings = {
           typescript = {
@@ -91,3 +90,4 @@ return {
     end,
   },
 }
+

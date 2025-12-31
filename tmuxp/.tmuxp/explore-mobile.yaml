@@ -1,0 +1,14 @@
+session_name: explore-mobile
+windows:
+  - window_name: zsh
+    start_directory: ~/1.Code/
+    focus: true
+  - window_name: others
+  #   panes:
+  #     - shell_command:
+  #         - nvim
+  # - window_name: dev
+  #   start_directory: ~/1.Code/1.Project/chirikualii-blog/
+  #   panes:
+  #     - shell_command:
+  #         - npm run dev

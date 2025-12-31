@@ -15,10 +15,12 @@ font-style = SemiBold
 font-style-bold = ExtraBold
 font-style-italic = SemiBold Italic
 font-style-bold-italic = ExtraBoldBold Italic
-font-size = 15
 font-feature = +liga
 
 
+custom-shader-animation = always
+shell-integration-features = no-cursor
+custom-shader = shaders/cursor_warp.glsl
 
 keybind = ctrl+0=unbind
 keybind = ctrl+1=unbind
@@ -36,3 +38,4 @@ keybind = super+1=unbind
 keybind = super+2=unbind
 keybind = super+3=unbind
 keybind = super+4=unbind
+font-size = 15

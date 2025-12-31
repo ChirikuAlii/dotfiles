@@ -1,0 +1,33 @@
+session_name: default
+windows:
+  - window_name: ChirikuAlii
+    start_directory: ~/1.Code
+    focus: true
+  - window_name: dotfiles
+    start_directory: ~/1.Code/2.Areas/dotfiles
+
+  - window_name: scracth
+    # panes:
+    #   - shell_command:
+    #       - cmd: echo "Hi ChirikuAlii"
+    #         sleep_before: 0.5
+    #
+#   layout: 2b7d,212x49,0,0{106x49,0,0[106x24,0,0,5,106x24,0,25,9],105x49,107,0,7}
+#   options: {}
+#   panes:
+#   - shell_command:
+#     - cd /home/chirikualii/1.Code/2.Areas/dotfiles
+#     - nvim
+#   - focus: 'true'
+#     shell_command: cd /home/chirikualii/1.Code/2.Areas/dotfiles
+#   - shell_command:
+#     - cd /home/chirikualii
+#     - zsh
+#   window_name: python
+# - layout: cfe3,212x49,0,0,6
+#   options: {}
+#   panes:
+#   - focus: 'true'
+#     shell_command: nvim
+#   start_directory: /home/chirikualii/.tmuxp (deleted)
+#   window_name: nvim
