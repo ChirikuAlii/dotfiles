@@ -4,6 +4,7 @@ windows:
     start_directory: ~/1.Code/
     focus: true
   - window_name: others
+    start_directory: ~/
   #   panes:
   #     - shell_command:
   #         - nvim
