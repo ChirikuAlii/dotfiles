@@ -1,0 +1,15 @@
+session_name: note-taking
+windows:
+  - window_name: obsidian
+    start_directory: ~/Documents/chirikualii/
+    focus: true
+  - window_name: others
+    start_directory: ~/Documents/chirikualii/
+  #   panes:
+  #     - shell_command:
+  #         - nvim
+  # - window_name: dev
+  #   start_directory: ~/1.Code/1.Project/chirikualii-blog/
+  #   panes:
+  #     - shell_command:
+  #         - npm run dev
