@@ -1,15 +1,16 @@
 session_name: blog
 windows:
   - window_name: astro-blog
-    start_directory: ~/1.Code/1.Project/chirikualii-blog/
+    start_directory: ~/1.Code/2.Areas/chirikualii-blog/
     focus: true
     panes:
       - shell_command:
           - nvim
   - window_name: dev
-    start_directory: ~/1.Code/1.Project/chirikualii-blog/
+    start_directory: ~/1.Code/2.Areas/chirikualii-blog/
     panes:
       - shell_command:
+          - npm i
           - npm run dev
   - window_name: others
     # panes:

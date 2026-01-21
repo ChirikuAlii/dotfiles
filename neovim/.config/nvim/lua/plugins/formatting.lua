@@ -22,6 +22,7 @@ return {
         python = { "isort", "black" },
         dart = { "dart_format" },
         java = { "google_java_format" },
+        go = { "gofmt" },
       },
       format_on_save = {
         lsp_fallback = true,

@@ -81,6 +81,17 @@ return {
         },
       })
 
+      require("lspconfig").gopls.setup({
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+          },
+        },
+      })
       -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
@@ -90,4 +101,3 @@ return {
     end,
   },
 }
-

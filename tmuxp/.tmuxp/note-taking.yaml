@@ -1,10 +1,10 @@
 session_name: note-taking
 windows:
   - window_name: obsidian
-    start_directory: ~/Documents/chirikualii/
+    start_directory: ~/1.Code/2.Areas/obsidian/chirikualii-obsidian-vault-test/
     focus: true
   - window_name: others
-    start_directory: ~/Documents/chirikualii/
+    start_directory: ~/1.Code/2.Areas/obsidian/chirikualii-obsidian-vault-test/
   #   panes:
   #     - shell_command:
   #         - nvim
