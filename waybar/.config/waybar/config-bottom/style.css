@@ -13,7 +13,7 @@
 /* font declared */
 * {
   font-family: "ProFont IIx Nerd Font", monospace;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   border-radius: 0;
 }
@@ -63,31 +63,7 @@ window#waybar.empty #window {
   border-bottom: 2px solid @focused;
 }
 
-window#waybar.bottom .modules-left {
-  margin: 0px 0 0 0px;
-  padding: 0 0 0 7px;
-  background-color: @background;
-  border-bottom: 0px solid @focused;
-}
-
-window#waybar.bottom .modules-right {
-  margin: 0px 0 0 0px;
-  padding: 0 0 0 7px;
-  background-color: @background;
-  border-bottom: 0px solid @focused;
-}
-
-window#waybar.bottom .modules-center {
-  margin: 0px 0 0 0px;
-  padding: 0 0 0 7px;
-  background-color: @background;
-  border-bottom: 0px solid @focused;
-}
-
-window#waybar.bottom button.focused {
-  border-bottom: 3px solid @focused;
-}
-
+/* whats this?? */
 button {
   border: none;
 }
@@ -135,7 +111,7 @@ button {
 }
 
 #workspaces button.urgent {
-  background-color: @background;
+  background-color: @urgent;
 }
 
 /* no idea what this does */
