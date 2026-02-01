@@ -25,9 +25,31 @@ return {
         },
       })
 
+      require("lspconfig").qmlls.setup({
+        capabilities = capabilities,
+        cmd = { "qmlls6" }, -- atau path absolut
+        filetypes = { "qml", "qmljs" },
+        root_dir = function(fname)
+          return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+        end,
+        single_file_support = true,
+        -- root_dir = lspconfig.util.root_pattern(
+        --   "CMakeLists.txt",
+        --   "qmlproject",
+        --   ".git"
+        -- ),
+        settings = {
+          qml = {
+            completion = {
+              enable = true,
+            },
+          },
+        },
+      })
       -- Setup lua_ls
       require("lspconfig").lua_ls.setup({
         capabilities = capabilities,
+        root_dir = require('lspconfig.util').root_pattern(".luarc.json", "init.lua"),
         settings = {
           Lua = {
             workspace = {

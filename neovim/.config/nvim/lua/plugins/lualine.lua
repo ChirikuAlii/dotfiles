@@ -3,21 +3,21 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("lualine").setup({
+      options = {
+        disabled_filetypes = { winbar = { "neo-tree", "snacks_picker", "help" } },
+      },
 
-      -- options = {
-      -- always_show_tabline = true,
-      -- },
 
       sections = {
         lualine_x = { "branch", "lsp_status", "encoding", "filetype" },
-        lualine_a = { "mode" },
+        lualine_a = { "mode", },
         lualine_b = {
-          { "tabs", tab_max_length = 500, path = 3, mode = 1, use_mode_colors = true },
-          "diff",
-          "diagnostics",
+          -- "diff",
+          -- "diagnostics",
         },
         lualine_c = {
 
+          { "tabs", tab_max_length = 500, path = 1, mode = 1, use_mode_colors = true },
           function()
             return require("screenkey").get_keys()
           end,
@@ -32,12 +32,14 @@ return {
 
       -- hanya aktif ketika buffer selalu aktif keduanya diatas buffer
       winbar = {
-        lualine_a = { "filename" },
+        -- lualine_a = { "filename" },
         -- lualine_c = { { "tabs", tab_max_length = 500, path = 1, mode = 1, use_mode_colors = true } },
       },
 
       inactive_winbar = {
-        lualine_c = { "filename" },
+        -- lualine_c = {
+        --   { "filename" }
+        -- },
         -- lualine_c = { { "tabs", tab_max_length = 500, path = 1, mode = 1, use_mode_colors = true } },
       },
     })

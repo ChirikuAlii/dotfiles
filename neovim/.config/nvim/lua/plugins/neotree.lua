@@ -7,7 +7,7 @@ return {
       "MunifTanjim/nui.nvim",
       "nvim-tree/nvim-web-devicons", -- optional, but recommended
     },
-    lazy = false, -- neo-tree will lazily load itself
+    lazy = false,                    -- neo-tree will lazily load itself
     opts = {
       -- options here
 
@@ -35,15 +35,15 @@ return {
         },
       },
 
-      sources = { "filesystem", "buffers", "git_status", "document_symbols" },
+      sources = { "filesystem" },
       source_selector = {
-        winbar = true,
+        winbar = false,
         statusline = false,
         sources = {
           { source = "filesystem" },
-          { source = "buffers" },
-          { source = "git_status" },
-          { source = "document_symbols" },
+          -- { source = "buffers" },
+          -- { source = "git_status" },
+          -- { source = "document_symbols" },
         },
       },
 
@@ -53,16 +53,16 @@ return {
         renderers = {
           root = {
             { "indent" },
-            { "icon", default = "C" },
-            { "name", zindex = 10 },
+            { "icon",  default = "C" },
+            { "name",  zindex = 10 },
           },
           symbol = {
-            { "indent", with_expanders = true },
+            { "indent",    with_expanders = true },
             { "kind_icon", default = "?" },
             {
               "container",
               content = {
-                { "name", zindex = 10 },
+                { "name",      zindex = 10 },
                 { "kind_name", zindex = 20, align = "right" },
               },
             },

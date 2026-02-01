@@ -2,14 +2,9 @@ return {
 
   "romgrk/barbar.nvim",
   dependencies = {
-    "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+    "lewis6991/gitsigns.nvim",     -- OPTIONAL: for git status
     "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
   },
-  -- vim.keymap.set("n", "", "<Cmd>BufferPrevious", {
-  --   noremap = true,
-  --   silent = true,
-  --   desc = "Scroll Jendela ke Bawah 1 Baris",
-  -- }),
   init = function()
     vim.g.barbar_auto_setup = false
     local map = vim.api.nvim_set_keymap
@@ -57,6 +52,7 @@ return {
     -- animation = true,
     -- insert_at_start = true,
     -- …etc.
+
     animation = true,
     maximum_length = 15,
     minimum_padding = 1,
@@ -80,6 +76,10 @@ return {
     },
     no_name_title = "unamed",
     visible = { modified = { buffer_number = true } },
+    exclude_ft = { 'snacks_picker_input', 'snacks_input', 'qf' },
+
+    -- Optionally, exclude by buffer name patterns if filetype isn't enough
+    exclude_name = { '%[Snacks Pickers%]' },
   },
   version = "^1.0.0", -- optional: only update when a new 1.x version is released
 }

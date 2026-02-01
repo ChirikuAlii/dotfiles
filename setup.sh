@@ -10,6 +10,9 @@ SKIP_PACKAGES=(
   .git
   ghostty-mac
   ghostty-linux
+  icons
+  themes
+  scripts
 )
 
 should_skip() {
@@ -38,4 +41,19 @@ done
 
 echo "✅ setup done"
 sh "$DOT/setup-ghostty.sh"
+
+stow -d "$DOT/icons" -t "$HOME" gruvbox-plus-icon-pack
+echo "✅ setup gruvbox-plus-icon-pack done"
+
+stow -d "$DOT/themes/kvantum" -t "$HOME" gruvbox
+echo "✅ setup gruvbox-kvantum done"
+
+stow -d "$DOT/scripts/tmux-auto-save" -t  $HOME bin
+echo "✅ setup tmux-auto-save done"
+
+stow -d "$DOT/scripts" -t $HOME tmux-save-session 
+echo "✅ setup tmux-save-session done"
+
+stow -d "$DOT/scripts" -t $HOME tmux-sessionizer 
+echo "✅ setup tmux-sessionizer done"
 

@@ -1,0 +1,7 @@
+{
+  "project.rootLevel": 0,
+  "workspace.checkThirdParty": false,
+  "workspace.library": ["$VIMRUNTIME/lua"],
+  "diagnostics.globals": ["vim"],
+  "workspace.ignoreDir": [".git"]
+}
