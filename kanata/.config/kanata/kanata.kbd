@@ -1,0 +1,48 @@
+;;My Kanata Setup
+;;Just manipultate home row keys to
+;; ------------------- THE KEY -----------------
+;; a     s     d    f   ... j    k   l     ; 
+;; lctrl shift alt meta ... meta alt shift ctrl
+;; ------------------- THE KEY -----------------
+;; Hold f activates arrows for keys: i j k l
+
+(defcfg
+  linux-dev /dev/input/by-id/usb-SINOWEALTH_㡋㈷删䉇䬠祥潢牡-event-kbd
+  linux-continue-if-no-devs-found yes
+  process-unmapped-keys yes 
+)
+(defsrc a s d f j k l ; caps )
+(deflayer default
+  @a @s @d @f @j @k @l @semi @ces
+)
+(defalias 
+  a (tap-hold 0 200 a lctl)
+)
+(defalias
+  s (tap-hold 0 200 s lsft)
+)
+(defalias
+  d (tap-hold 0 200 d lalt) 
+)
+(defalias
+  f (tap-hold 0 200 f lmet) 
+)
+
+(defalias 
+  j (tap-hold 0 200 j lmet)
+)
+
+(defalias
+  k (tap-hold 0 200 k lalt)
+)
+(defalias
+  l (tap-hold 0 200 l lsft) 
+)
+(defalias
+  semi (tap-hold 0 200 ; lctl) 
+)
+(defalias
+  ;; Tap = escape, Hold = capslock
+  ces (tap-hold 0 150 esc caps)
+)
+

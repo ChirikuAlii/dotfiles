@@ -1,0 +1,10 @@
+app.zen_browser.zen
+com.google.Chrome
+com.mattjakeman.ExtensionManager
+com.protonvpn.www
+com.spotify.Client
+com.usebottles.bottles
+com.usebruno.Bruno
+com.valvesoftware.Steam
+org.videolan.VLC
+page.tesk.Refine

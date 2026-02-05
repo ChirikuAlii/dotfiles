@@ -1,42 +1,126 @@
-## Dotfiles
-A personal collection of configuration files (dotfiles) for my development environment. This repository contains setups for the following productivity tools:
+# Dotfiles
 
-- Neovim: The main text editor (using Lua configuration).
-- Tmux: A terminal multiplexer for session management.
-- Ghostty: A modern terminal emulator (cross-platform).
-- Tmuxp : Plugin tmux to handle session and create template each session using yaml
+Personal dotfiles environment di Linux (Arch-based). Repository ini berisi konfigurasi lengkap window manager dan aplikasinya beserta script instalasinya, kedepan akan ditambahkan untuk yang mac os.
 
-#### Development Note 
-This dotfiles collection is a constantly evolving project. As the development area expands, this configuration will be updated and improved.
+## 📦 Packages Overview
 
-#### Next To Do 
-Create installation scripts for Software Development Kits (SDKs) like Java, Flutter, and other tools to simplify onboarding on new machines.
+### Window Manager & Desktop
 
-## How to Use
+- **Niri** - Scrollable-tiling Wayland compositor
+- **Hyprlock** - ScreenLock untuk wayland
+- **Waybar** - Customizable status bar untuk Wayland
+- **Fuzzel** - Application launcher untuk Wayland
+- **Rofi** - Application launcher & window switcher (WIP)
+- **Wlogout** - Logout menu untuk Wayland (WIP)
+- **Swaybg** - Wallpaper manager untuk Wayland
+- **Swayidle** - Idle management daemon
+- **GNOME** - Desktop environment sebagai DE cadangan (GDM, settings, etc.)
 
-### 1. Clone Repository
+### Utilities
 
-This repository is designed to be placed in a specific path.
-**Important**: The `setup.sh` script defaults to `$HOME/1.Code/2.Areas/dotfiles`.
+- **Btop** - Resource monitor
+- **Fastfetch** - System information tool
+- **Fzf** - Fuzzy finder
+- **Zoxide** - Smarter cd command
+- **Bat** - Cat clone dengan syntax highlighting
+- **Gitu** - Terminal UI untuk Git
+- **Cliphist** - Clipboard manager untuk Wayland
+- **Kanata** - Keyboard remapper (dengan kanata-tray)
+- **Sesh** - Tmux session manager
+- **Thunar** - File manager dengan plugins
+- **Nautilus** - GNOME file manager
+- **Pamac** (AUR) - Package manager GUI
+- **Flatpak** - Universal package manager
+- **Stow** - Symlink manager untuk dotfiles
+- **Snapper** - Btrfs snapshot manager
+- **UFW** - Firewall
+- **ProtonVPN** - VPN client (CLI & Flatpak GUI)
+- **Git** - Version control
 
-If you clone to that location:
+### Applications
+
+- **Neovim** - Text editor utama dengan konfigurasi Lua
+- **Tmux** - Terminal multiplexer untuk session management
+- **Tmuxp** - Template manager untuk tmux sessions (YAML-based)
+- **Ghostty** - Modern terminal emulator
+- **Zsh** - Shell dengan Oh My Zsh framework
+- **Obsidian** - Note-taking & knowledge base
+- **Windsurf** - AI-powered code editor
+- **Neovide** - Neovim GUI
+- **Firefox** - Web browser
+- **Zen Browser** (Flatpak) - Privacy-focused browser
+- **Chrome** (Flatpak) - Google Chrome
+- **Bruno** (Flatpak) - API client
+- **Spotify** (Flatpak) - Music streaming
+- **Telegram** - Messaging app
+- **VLC** (Flatpak) - Media player
+- **JetBrains Toolbox** (AUR) - IDE manager
+- **Base-devel** - Development tools
+- **WPS Office** (AUR) - Office suite
+- **Papers** - Document viewer
+- **Loupe** - Image viewer
+
+### Themes & Fonts
+
+- **Kvantum** - Qt theme engine
+- **Gruvbox Plus Icon Pack** - Icon theme
+- **Nerd Fonts** - Patched fonts dengan icons
+- **ProFont** - Monospace font
+- **JetBrains Mono** - Monospace font
+- **Adobe Source Han** - CJK fonts
+- **Noto Fonts** - Google fonts
+
+## 🚀 Installation (Linux - Arch-based)
+
+### Prerequisites
+
 ```bash
+# Update system
+sudo pacman -Syu
+```
+
+### Install
+
+```bash
+# 1. Clone repository
 git clone <URL_REPO> ~/1.Code/2.Areas/dotfiles
 cd ~/1.Code/2.Areas/dotfiles
+
+# 2. Install terminal & shell environment
+bash install-term-shell.sh
+
+# 3. Install all packages
+bash install-package.sh
+
+# 4. Apply dotfiles configuration
+bash install-dotfiles-config.sh
 ```
 
-*If you saved it to a different location, please edit the `export DOT="..."` line in the `setup.sh` file to match your folder location.*
+### Manual Steps
 
-### 2. Installation (Stow)
+Jika ingin install step-by-step:
 
-Run the `setup.sh` script to apply the configuration:
+1. **Terminal & Shell** - Install Ghostty, Zsh, Oh My Zsh, Yay, Pamac
+2. **Packages** - Install dari official repo, AUR, dan Flatpak
+3. **Dotfiles** - Stow semua konfigurasi ke home directory
+
+### Uninstall
 
 ```bash
-sh setup.sh
+bash uninstall-dotfiles-config.sh
 ```
 
-This script will do the following:
-1. Create a stow for **Neovim** in `~/.config/nvim`.
-2. Create a stow for **Tmux** in `~/.tmux.conf`.
-3. Run the setup for **Ghostty** (Selects the appropriate config whether you're using macOS or Linux).
-4. Create a stow for **Tmuxp** in `~/.tmuxp`
+## 📝 Notes
+
+- **Linux-focused**: Konfigurasi utama untuk Arch Linux & derivatives
+- **macOS**: Belum di-setup (general config only)
+- **Path default**: `$HOME/1.Code/2.Areas/dotfiles` (edit script jika beda)
+- **Wayland-native**: Sebagian besar tools untuk Wayland compositor
+
+## 🔄 Update Package Lists
+
+```bash
+bash update-package-info.sh
+```
+
+Script ini akan update list packages yang terinstall ke file txt untuk backup.

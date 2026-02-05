@@ -1,0 +1,11 @@
+jetbrains-toolbox
+kanata
+kanata-tray-bin
+niri_window_buttons
+pamac-aur
+sesh-bin
+ttf-wps-fonts
+windsurf
+wlogout
+wps-office
+yay

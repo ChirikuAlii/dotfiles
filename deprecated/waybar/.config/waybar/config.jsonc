@@ -1,0 +1,361 @@
+// -*- mode: jsonc -*-
+[
+  {
+    "name": "waybar#top",
+    "layer": "top",
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": 8, // Gaps between modules (4px)
+    // Choose the order of the modules
+    // "exclusive": true,
+    // "width": 1280, // Waybar width
+
+    "custom/logo": {
+      "format": "{icon}",
+      "format-icons": "",
+      "tooltip": false,
+      "on-click": "$XDG_CONFIG_HOME/waybar/fastfetch.sh",
+    },
+
+    "custom/title-window-text": {
+      "format": "_",
+      "tooltip": false,
+    },
+
+    "custom/title-window": {
+      "tooltip": false,
+      "exec": "$HOME/.local/bin/waybar-niri-title",
+    },
+
+    "modules-left": [
+      "custom/logo",
+      "niri/workspaces",
+      "custom/title-window",
+      "custom/title-window-text",
+      "sway/mode",
+      "sway/scratchpad",
+      "custom/media",
+    ],
+    "modules-center": ["clock"],
+    "modules-right": [
+      "custom/network-tes",
+      "idle_inhibitor",
+      "tray",
+      "custom/netspeed",
+      "pulseaudio",
+      // "bluetooth",
+      // "network",
+      "power-profiles-daemon",
+      "battery",
+      "battery#bat2",
+      "custom/power",
+    ],
+
+    "custom/network-tes": {
+      "exec": "nm-applet --indicator",
+      "format": "tes",
+      "on-click": "nm-connection-editor",
+    },
+    //unsued modules-right : [
+    // "clock",
+    // "cpu",
+    // "memory",
+    // "temperature",
+    // "backlight",
+    // "keyboard-state",
+    // "sway/language",
+    // ]
+
+    "bluetooth": {
+      "format": " {status}",
+      "format-connected": "󰂱",
+      "format-connected-battery": "󰂱 {device_battery_percentage}%",
+      "format-disabled": "󰂲",
+      "format-off": "󰂲",
+      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+      // "on-click": "",
+      // "on-click-right": "",
+    },
+
+    "niri/workspaces": {
+      "format": "[ {icon} ]",
+    },
+
+    "niri/window": {
+      "format": "{app_id}",
+    },
+
+    "keyboard-state": {
+      "numlock": true,
+      "capslock": true,
+      "format": "{name} {icon}",
+      "format-icons": {
+        "locked": "",
+        "unlocked": "",
+      },
+    },
+
+    "mpd": {
+      "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+      "format-disconnected": "Disconnected ",
+      "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+      "unknown-tag": "N/A",
+      "interval": 5,
+      "consume-icons": {
+        "on": " ",
+      },
+      "random-icons": {
+        "off": "<span color=\"#f53c3c\"></span> ",
+        "on": " ",
+      },
+      "repeat-icons": {
+        "on": " ",
+      },
+      "single-icons": {
+        "on": "1 ",
+      },
+      "state-icons": {
+        "paused": "",
+        "playing": "",
+      },
+      "tooltip-format": "MPD (connected)",
+      "tooltip-format-disconnected": "MPD (disconnected)",
+    },
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": "",
+      },
+    },
+
+    "tray": {
+      "reverse-direction": true,
+      "spacing": 10,
+    },
+
+    "clock": {
+      "tooltip-format": "<tt><big>{calendar}</big></tt>",
+      "format": "[ {:%H.%M} ]",
+      "format-alt": "[ {:%a %d. %h %H:%M} 󰃭 ]",
+      "calendar": {
+        "mode-mon-col": 3,
+        "on-scroll": -1,
+        "on-click-right": "mode",
+        "format": {
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "days": "<span color='#ffffff'><b>{}</b></span>",
+          "weekdays": "<span color='#D08B57'><b>{}</b></span>",
+          "today": "<span color='#D08B57'><b><u>{}</u></b></span>",
+        },
+      },
+
+      "actions": {
+        "on-click-right": "mode",
+        "on-click-forward": "tz_up",
+        "on-click-backward": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down",
+      },
+    },
+
+    "cpu": {
+      "format": "{usage}% ",
+      "tooltip": false,
+    },
+
+    "memory": {
+      "format": "{}% ",
+    },
+
+    "temperature": {
+      "critical-threshold": 80,
+      "format": "{temperatureC}°C {icon}",
+      "format-icons": ["", "", ""],
+      // "thermal-zone": 2,
+      // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+      // "format-critical": "{temperatureC}°C {icon}",
+    },
+
+    "backlight": {
+      // "device": "acpi_video1",
+      "format": "{percent}% {icon}",
+      "format-icons": ["", "", "", "", "", "", "", "", ""],
+    },
+
+    "battery": {
+      "states": {
+        // "good": 95,
+        "warning": 30,
+        "critical": 15,
+      },
+
+      "format": "{capacity}% {icon}",
+      "format-full": "{capacity}% {icon}",
+      "format-charging": "{capacity}% ",
+      "format-plugged": "{capacity}% ",
+      "format-alt": "{time} {icon}",
+      "format-icons": ["", "", "", "", ""],
+      // "format-good": "", // An empty format will hide the module
+      // "format-full": "",
+    },
+
+    "battery#bat2": {
+      "bat": "BAT2",
+    },
+
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": "",
+      },
+    },
+
+    "custom/netspeed": {
+      "exec": "$XDG_CONFIG_HOME/waybar/modules-src/netspeed.sh",
+      "return-type": "json",
+    },
+    "network#speed": {
+      "interface": "enp5s0",
+      "format": "[  {bandwidthDownBytes}  {bandwidthUpBytes} ]",
+      "interval": "2",
+    },
+
+    "network": {
+      "format-wifi": "Connected 󰖩",
+      "format-ethernet": "Connected ",
+      "tooltip-format": "{ifname} via {gwaddr}",
+      "tooltip-format-wifi": "{ifname}: {essid} {signalStrength}% | {ipaddr}/{cidr}",
+      "format-disconnected": "Disconnected ⚠",
+      "format": "Connected",
+      "format-alt": "{ifname}: {essid} | {ipaddr}/{cidr}",
+      // "format-linked": " ",
+      "on-click-right": "nm-applet --indicator",
+      // "interface": "wlp2*", // (Optional) To force the use of this interface
+    },
+
+    "pulseaudio": {
+      "format": "[ {volume}% {icon}  | {format_source} ] ",
+      "format-bluetooth": "[ {volume}% {icon}  | {format_source} ] ",
+      "format-bluetooth-muted": "{icon} {format_source} ",
+      "format-muted": "{format_source} ",
+      "format-source": "{volume}% ",
+      "format-source-muted": " ",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""],
+      },
+      "on-click": "pavucontrol",
+      // "scroll-step": 1, // %, can be a float
+    },
+
+    "custom/media": {
+      "format": "{icon} {text}",
+      "return-type": "json",
+      "max-length": 40,
+      "format-icons": {
+        "spotify": "",
+        "default": "🎜",
+      },
+      "escape": true,
+      "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
+      // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+
+    "custom/power": {
+      "format": "⏻ ",
+      "tooltip": false,
+      "menu": "on-click",
+      "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+      "menu-actions": {
+        "shutdown": "shutdown",
+        "reboot": "reboot",
+        "suspend": "systemctl suspend",
+        "hibernate": "systemctl hibernate",
+      },
+    },
+  },
+
+  {
+    "name": "waybar#bottom",
+    "layer": "top",
+    "exclusive": true,
+
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": 8, // Gaps between modules (4px)
+
+    "custom/logo": {
+      "format": "{icon}",
+      "format-icons": "",
+      "tooltip": false,
+      "on-click": "$XDG_CONFIG_HOME/waybar/fastfetch.sh",
+    },
+
+    "custom/title-window": {
+      "tooltip": false,
+      "exec": "$HOME/.local/bin/waybar-niri-title",
+    },
+
+    "modules-left": ["cffi/niri_window_buttons"],
+
+    "cffi/niri_window_buttons": {
+      "module_path": "/usr/lib/waybar/libniri_window_buttons.so",
+      "only_current_workspace": true,
+      "show_window_titles": true,
+      "icon_size": 18,
+      "icon_spacing": 6,
+      "min_button_width": 120,
+      "max_button_width": 200,
+      "max_taskbar_width": 1600,
+      "drag_hover_focus": true,
+      "drag_hover_focus_delay": 500,
+      "click_actions": {
+        "left_click_unfocused": "focus-window",
+        "left_click_focused": "maximize-column",
+        "double_click": "maximize-window-to-edges",
+        "right_click_unfocused": "menu",
+        "right_click_focused": "menu",
+        "middle_click_unfocused": "close-window",
+        "middle_click_focused": "close-window",
+        "scroll_up": "none",
+        "scroll_down": "none",
+      },
+      "context_menu": [
+        { "label": "  Maximize Column", "action": "maximize-column" },
+        {
+          "label": "  Maximize to Edges",
+          "action": "maximize-window-to-edges",
+        },
+        { "label": "󰉩  Toggle Floating", "action": "toggle-window-floating" },
+        { "label": "  Close Window", "action": "close-window" },
+      ],
+      "multi_select_modifier": "ctrl",
+      "multi_select_menu": [
+        { "label": "  Move All Up", "action": "move-to-workspace-up" },
+        { "label": "  Move All Down", "action": "move-to-workspace-down" },
+        { "label": "  Close All", "action": "close-windows" },
+      ],
+      "ignore_rules": [],
+      "notifications": {
+        "enabled": true,
+        "use_desktop_entry": true,
+        "use_fuzzy_matching": false,
+      },
+      "apps": {},
+    },
+  },
+]
