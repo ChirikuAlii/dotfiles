@@ -1,6 +1,5 @@
 jetbrains-toolbox
 kanata
-kanata-tray-bin
 niri_window_buttons
 pamac-aur
 sesh-bin

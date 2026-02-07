@@ -8,8 +8,8 @@ background= "#2C2A29"
 # background-opacity = 0.80 
 #keybind = ctrl+n=new_window
 keybind = super+r=reload_config
-gtk-titlebar=false
-window-decoration = false
+#gtk-titlebar=false
+#window-decoration = false
 window-padding-x = 0
 window-padding-y = 4,0
 

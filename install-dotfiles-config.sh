@@ -101,6 +101,12 @@ log "Stowing $folder..."
 stow -v -R -t "$HOME" "$folder" 
 cd "$DOTFILES"
 
+
+cd "$DOTFILES/.."
+folder="ssh"
+log "Stowing $folder..."
+stow -v -R -t "$HOME" "$folder" 
+cd "$DOTFILES"
 # ==========================================
 # 6. SELESAI
 # ==========================================

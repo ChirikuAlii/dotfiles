@@ -9,7 +9,6 @@ bluez-utils
 btop
 btrfs-progs
 cliphist
-decibels
 dosfstools
 easyeffects
 efibootmgr
@@ -31,7 +30,6 @@ gnome-clocks
 gnome-color-manager
 gnome-connections
 gnome-console
-gnome-contacts
 gnome-control-center
 gnome-disk-utility
 gnome-font-viewer
@@ -45,7 +43,6 @@ gnome-shell
 gnome-software
 gnome-system-monitor
 gnome-text-editor
-gnome-tour
 gnome-tweaks
 gnome-user-docs
 gnome-user-share
@@ -62,7 +59,6 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 gvfs-nfs
-gvfs-onedrive
 gvfs-smb
 gvfs-wsdd
 hwdetect
@@ -111,7 +107,6 @@ rofimoji
 rygel
 sassc
 satty
-showtime
 simple-scan
 slurp
 snap-pac

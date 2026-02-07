@@ -21,13 +21,13 @@ log() {
 
 log "Restore Paket Official (Arch Repo)..."
 cd "$DOTFILES/.."
-if [ -f "official_explicit.txt" ]; then
-    sudo pacman -S --needed --noconfirm - < official_explicit.txt
+if [ -f "extra_packages_explicit.txt" ]; then
+    sudo pacman -S --needed --noconfirm - < extra_packages_explicit.txt
 fi
 
 log "Restore Paket AUR..."
-if [ -f "aur_explicit.txt" ]; then
-    yay -S --needed --noconfirm - < aur_explicit.txt
+if [ -f "aur_packages_explicit.txt" ]; then
+    yay -S --needed --noconfirm - < aur_packages_explicit.txt
 fi
 
 log "Restore Paket Flatpak..."
