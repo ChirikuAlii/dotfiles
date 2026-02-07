@@ -338,6 +338,17 @@ window-rule {
 }
 
 window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match title="^Gitnuro"
+    // open-maximized true   
+    // draw-border-with-background true
+
+    default-column-width {}
+}
+
+window-rule {
     match app-id="waybar"
     
     // Memastikan Waybar tidak ikut ter-zoom atau fokus
