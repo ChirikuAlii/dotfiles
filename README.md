@@ -114,7 +114,7 @@ bash uninstall-dotfiles-config.sh
 
 - **Linux-focused**: Konfigurasi utama untuk Arch Linux & derivatives
 - **macOS**: Belum di-setup (general config only)
-- **Path default**: `$HOME/1.Code/2.Areas/dotfiles` (edit script jika beda)
+- **Path default**: `$HOME/1.Code/2.Areas/dotfiles`
 - **Wayland-native**: Sebagian besar tools untuk Wayland compositor
 
 ## 🔄 Update Package Lists
