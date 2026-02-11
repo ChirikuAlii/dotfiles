@@ -12,3 +12,4 @@ pacman -Qeqm > aur_packages_explicit.txt
 
 grep -vFf amd_packages.txt extra_packages_explicit.txt > temp.txt && mv temp.txt extra_packages_explicit.txt
 grep -vFf nvidia_packages.txt extra_packages_explicit.txt > temp.txt && mv temp.txt extra_packages_explicit.txt
+grep -vFf cpu_packages.txt extra_packages_explicit.txt > temp.txt && mv temp.txt extra_packages_explicit.txt

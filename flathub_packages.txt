@@ -5,5 +5,4 @@ com.spotify.Client
 com.usebottles.bottles
 com.usebruno.Bruno
 com.valvesoftware.Steam
-org.videolan.VLC
 page.tesk.Refine

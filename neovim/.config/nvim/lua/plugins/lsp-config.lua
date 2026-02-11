@@ -114,6 +114,23 @@ return {
           },
         },
       })
+
+      -- Setup Basedpyright (LSP)
+      require("lspconfig").basedpyright.setup({
+        settings = {
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "basic", -- bisa diubah ke "strict" jika ingin sangat ketat
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              inlayHints = {
+                variableTypes = true,
+                callArgumentNames = true,
+              },
+            },
+          },
+        },
+      })
       -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })

@@ -1,5 +1,8 @@
+basedpyright
+black
 go
 gopls
 lua-language-server
 prettier
+pylint
 typescript-language-server

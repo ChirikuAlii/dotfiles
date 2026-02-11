@@ -3,8 +3,12 @@ kanata
 niri_window_buttons
 pamac-aur
 sesh-bin
+sublime-merge
 ttf-wps-fonts
+tufw
+visual-studio-code-bin
 windsurf
 wlogout
 wps-office
 yay
+yay-debug
