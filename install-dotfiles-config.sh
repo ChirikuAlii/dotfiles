@@ -33,7 +33,6 @@ STOW_FOLDERS=(
     "systemd"
     "wallpapers"
     "waybar"
-    "fonts"
 )
 
 for folder in "${STOW_FOLDERS[@]}"; do
@@ -43,12 +42,6 @@ for folder in "${STOW_FOLDERS[@]}"; do
     fi
 done
 
-
-cd "$DOTFILES/icons"
-folder="gruvbox-plus-icon-pack"
-log "Stowing $folder..."
-stow -v -R -t "$HOME" "$folder" 
-cd "$DOTFILES"
 
 cd "$DOTFILES/scripts"
 folder="swaybg-slideshow"
@@ -69,13 +62,11 @@ log "Stowing $folder..."
 stow -v -R -t "$HOME" "$folder" 
 cd "$DOTFILES"
 
-
-cd "$DOTFILES/themes"
-folder="config"
+cd "$DOTFILES/scripts"
+folder="niri-prefix"
 log "Stowing $folder..."
 stow -v -R -t "$HOME" "$folder" 
 cd "$DOTFILES"
-
 
 cd "$DOTFILES/.."
 folder="kanata"
@@ -101,12 +92,6 @@ log "Stowing $folder..."
 stow -v -R -t "$HOME" "$folder" 
 cd "$DOTFILES"
 
-
-cd "$DOTFILES/.."
-folder="ssh"
-log "Stowing $folder..."
-stow -v -R -t "$HOME" "$folder" 
-cd "$DOTFILES"
 # ==========================================
 # 6. SELESAI
 # ==========================================

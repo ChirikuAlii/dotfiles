@@ -70,7 +70,7 @@ ZSH_THEME="bira"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-vi-mode fzf fzf-tab)
+plugins=(git zsh-vi-mode fzf fzf-tab sdk ssh pass)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -172,3 +172,7 @@ bindkey -M viins '\es' sesh-sessions
 if [ -f "$HOME/.env.local" ]; then
     source "$HOME/.env.local"
 fi
+
+
+alias seeapp='ls /usr/share/applications/*.desktop'
+alias seeappflatpak='flatpak list --app --columns=application'

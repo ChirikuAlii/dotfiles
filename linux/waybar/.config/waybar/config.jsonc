@@ -38,6 +38,7 @@
     ],
     "modules-center": ["clock"],
     "modules-right": [
+      "custom/niriprefix",
       "custom/network-tes",
       "idle_inhibitor",
       "tray",
@@ -82,6 +83,7 @@
 
     "niri/workspaces": {
       "format": "[ {icon} ]",
+      "current-only": true,
     },
 
     "niri/window": {
@@ -223,6 +225,12 @@
       "exec": "$XDG_CONFIG_HOME/waybar/modules-src/netspeed.sh",
       "return-type": "json",
     },
+
+    "custom/niriprefix": {
+      "exec": "$XDG_CONFIG_HOME/waybar/modules-src/niri-prefix-detector.sh",
+      "return-type": "json",
+    },
+
     "network#speed": {
       "interface": "enp5s0",
       "format": "[  {bandwidthDownBytes}  {bandwidthUpBytes} ]",
@@ -349,7 +357,7 @@
         { "label": "  Move All Down", "action": "move-to-workspace-down" },
         { "label": "  Close All", "action": "close-windows" },
       ],
-      "ignore_rules": [],
+      "ignore_rules": [{ "app_id": "foot" }],
       "notifications": {
         "enabled": true,
         "use_desktop_entry": true,
