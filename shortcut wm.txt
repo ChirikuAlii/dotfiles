@@ -1,0 +1,28 @@
+- w1 -> mod + 1
+- a=zen ,s=chrome ,d=firefox
+
+- w2 -> mod +2
+- a=terminal , s=? ,d=?
+
+- w3 -> mod + 3
+- a=code , s=windsurf ,d=?
+
+- w4 -> mod + 4/f
+- a=note_terminal, s=obsidian ,d=?
+
+- w5 -> mod + 5
+- a=thunderbird, s=discord ,d=telegram
+- w6 -> mod + 0
+- a=? s=? d=?
+
+- w7 -> mod + k
+- a=spotify ,s=vlc ,d
+
+- w8 -> mod + l
+- a=sublime-merge ,s=bruno ,d=?
+
+- w9 -> mod + 9
+- a=thunar ,s ,d
+
+
+

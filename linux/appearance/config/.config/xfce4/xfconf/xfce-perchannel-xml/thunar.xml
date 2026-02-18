@@ -3,7 +3,7 @@
 <channel name="thunar" version="1.0">
   <property name="last-view" type="string" value="ThunarIconView"/>
   <property name="last-icon-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_150_PERCENT"/>
-  <property name="last-window-width" type="int" value="936"/>
+  <property name="last-window-width" type="int" value="1888"/>
   <property name="last-window-height" type="int" value="983"/>
   <property name="last-window-maximized" type="bool" value="false"/>
   <property name="last-show-hidden" type="bool" value="true"/>
@@ -31,5 +31,6 @@
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
   <property name="last-sort-column" type="string" value="THUNAR_COLUMN_NAME"/>
   <property name="last-sort-order" type="string" value="GTK_SORT_ASCENDING"/>
-  <property name="last-details-view-column-widths" type="string" value="50,50,251,50,50,1189,50,50,408,50,50,67,50,110"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,250,50,50,1189,50,50,1236,50,50,76,50,155"/>
+  <property name="last-compact-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_75_PERCENT"/>
 </channel>
