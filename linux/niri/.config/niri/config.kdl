@@ -362,7 +362,7 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Space hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+B hotkey-overlay-title="Open a Neovide " { spawn "noevide"; }
+    // Mod+B hotkey-overlay-title="Open a Neovide " { spawn "noevide"; }
     
     //ROFI
     Mod+A hotkey-overlay-title="Rofi Search Password" { spawn-sh "sh ~/.local/bin/launch_passtore.sh"; }
@@ -371,6 +371,7 @@ binds {
     Mod+X hotkey-overlay-title="Rofi Session Menu" { spawn-sh "sh ~/.config/rofi/powermenu/powermenu.sh"; }
     Mod+S hotkey-overlay-title="Rofi Search Ssh" { spawn-sh "sh ~/.local/bin/launch_ssh.sh"; }
     Mod+C hotkey-overlay-title="Rofi Search History Clipboard" { spawn-sh "sh ~/.local/bin/launch_clipboard.sh"; }
+    Mod+B hotkey-overlay-title="Rofi Calcurator" { spawn-sh "sh ~/.local/bin/launch_calc.sh"; }
     Mod+Shift+M hotkey-overlay-title="Rofi Kanata Menu" { spawn-sh "sh ~/.local/bin/launch_kanata_menu.sh"; }
 
     //Color Picker
