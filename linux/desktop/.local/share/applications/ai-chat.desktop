@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=AI Chat
+Comment=Chat AI app like gemini, chat gpt, etc
+# Gunakan flag --class untuk menentukan App ID baru
+Icon=artificial_intelligence
+Terminal=false
+Categories=System;Network;
+# Pastikan StartupWMClass SAMA dengan --class di atas
+StartupWMClass=AIChatApp
+Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=artificial_intelligence firefox -no-remote -P "ai-chat" --name Ai-Chat' > /dev/null 2>&1 &
+StartupWMClass=Ai-Chat

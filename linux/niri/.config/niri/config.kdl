@@ -98,6 +98,8 @@ spawn-at-startup "sh" "-c" "$HOME/.local/bin/wallpaper.sh"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "sh"  "-c" "waybar -c $XDG_CONFIG_HOME/waybar/config.jsonc" 
 spawn-at-startup "niri" "msg" "action" "focus-workspace" "Terminal"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
@@ -112,10 +114,16 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
     // Uncomment to turn off all animations.
-    off
+    // off
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 0.4
+    slowdown 0.5
+
+    workspace-switch {
+      spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001    
+      off
+    }
 }
+
 
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
@@ -131,6 +139,17 @@ window-rule {
 window-rule {
     match title="^Gitnuro"
     default-column-width {}
+}
+
+window-rule {
+    match title="^Guild Wars 2"
+    default-column-width {}
+    focus-ring {
+        off
+        // width 4
+        // active-color "#D08B57"
+        // inactive-color "#505050"
+    }
 }
 
 window-rule {
@@ -213,9 +232,30 @@ window-rule {
   open-maximized true
 }
 
+
+window-rule {
+  match app-id="Ai-Chat" 
+  open-on-workspace "Browser"
+  open-maximized true
+}
+
+
+window-rule {
+  match app-id="Youtube-Music" 
+  open-on-workspace "Browser"
+  open-maximized true
+}
+
 window-rule {
   match app-id="com.mitchellh.ghostty" 
   open-on-workspace "Terminal"
+  open-maximized true
+}
+
+
+window-rule {
+  match app-id="com.mitchellh.ghostty.note" 
+  open-on-workspace "Note"
   open-maximized true
 }
 
@@ -323,7 +363,18 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Space hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+B hotkey-overlay-title="Open a Neovide " { spawn "noevide"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    
+    //ROFI
+    Mod+A hotkey-overlay-title="Rofi Search Password" { spawn-sh "sh ~/.local/bin/launch_passtore.sh"; }
+    Mod+D hotkey-overlay-title="Rofi Search Application" { spawn-sh "sh ~/.local/bin/launch_app.sh"; }
+    Mod+E hotkey-overlay-title="Rofi Search Active Window" { spawn-sh "sh ~/.local/bin/launch_window.sh"; }
+    Mod+X hotkey-overlay-title="Rofi Session Menu" { spawn-sh "sh ~/.config/rofi/powermenu/powermenu.sh"; }
+    Mod+S hotkey-overlay-title="Rofi Search Ssh" { spawn-sh "sh ~/.local/bin/launch_ssh.sh"; }
+    Mod+C hotkey-overlay-title="Rofi Search History Clipboard" { spawn-sh "sh ~/.local/bin/launch_clipboard.sh"; }
+    Mod+Shift+M hotkey-overlay-title="Rofi Kanata Menu" { spawn-sh "sh ~/.local/bin/launch_kanata_menu.sh"; }
+
+    //Color Picker
+    Mod+Shift+C hotkey-overlay-title="Pick Color Using Color Picker" { spawn-sh "hyprpicker -a -f hex -n"; } 
     Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
@@ -391,10 +442,10 @@ binds {
     Mod+Ctrl+N         { move-column-to-workspace-down; }
     Mod+Ctrl+P         { move-column-to-workspace-up; }
 
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+N         { move-workspace-down; }
-    Mod+Shift+P         { move-workspace-up; }
+    // Mod+Shift+Page_Down { move-workspace-down; }
+    // Mod+Shift+Page_Up   { move-workspace-up; }
+    // Mod+Shift+N         { move-workspace-down; }
+    // Mod+Shift+P         { move-workspace-up; }
 
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
@@ -410,6 +461,11 @@ binds {
     Mod+Shift+WheelScrollUp        { focus-column-left; }
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    
+    Mod+Shift+P { screenshot; }
+    Ctrl+Shift+P { screenshot-screen; }
+    Alt+Shift+P { screenshot-window; }
 
     // Mod+1 { focus-workspace 1; }
     Mod+1 { spawn "sh" "-c" "foot bash -c 'python3 ~/.local/bin/niri_prefix.py -ws \"Browser\"; exit'  "; } 
@@ -444,10 +500,10 @@ binds {
     Mod+M { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+Ctrl+F { expand-column-to-available-width; }
-    Mod+C { center-column; }
+    // Mod+C { center-column; }
 
     // Center all fully visible columns on screen.
-    Mod+Ctrl+C { center-visible-columns; }
+    // Mod+Ctrl+C { center-visible-columns; }
 
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }

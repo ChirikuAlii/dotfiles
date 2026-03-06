@@ -21,6 +21,13 @@ log "Stowing $folder..."
 stow -D -v -t "$HOME" "$folder" 
 cd "$DOTFILES"
 
+
+# stow sounds
+cd "$DOTFILES/appearance"
+folder="sounds"
+log "Stowing $folder..."
+stow -D -v -t "$HOME" "$folder" 
+
 # themes 
 cd "$DOTFILES/appearance/themes/gruvbox-gtk-theme/themes"
 chmod +x install.sh
@@ -32,5 +39,9 @@ cd "$DOTFILES/appearance/icons/gruvbox-plus-icon-pack/scripts"
 rm "$HOME/.local/share/icons/Gruvbox-Plus-Dark"
 rm "$HOME/.local/share/icons/Gruvbox-Plus-Light"
 cd "$DOTFILES"
+
+# custom icons
+cd "$DOTFILES/appearance/icons"
+stow -D -v -t "$HOME" "custom-icons" 
 
 

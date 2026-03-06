@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Youtube Music
+Comment=Youtube Music Browser with specific container account youtube
+# Gunakan flag --class untuk menentukan App ID baru
+Icon=yt_music
+Terminal=false
+Categories=System;Network;
+# Pastikan StartupWMClass SAMA dengan --class di atas
+Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=artificial_intelligence firefox -no-remote -P "youtube-music" --name Youtube-Music' > /dev/null 2>&1 &
+StartupWMClass=Youtube-Music

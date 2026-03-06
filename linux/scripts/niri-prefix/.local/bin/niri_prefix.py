@@ -62,12 +62,24 @@ def main():
         ),
         Target(app_id="app.zen_browser.zen", workspace_name="Browser", key="a"),
         Target(
-            app_id="google-chrome",
-            command_open="com.google.Chrome",
+            app_id="Ai-Chat",
+            command_open="nohup sh -c 'XAPP_FORCE_GTKWINDOW_ICON=artificial_intelligence firefox -no-remote -P \"ai-chat\" --name Ai-Chat' > /dev/null 2>&1 &",
             workspace_name="Browser",
             key="s",
         ),
-        Target(app_id="firefox", workspace_name="Browser", key="d"),
+        Target(
+            app_id="Youtube-Music",
+            command_open="nohup sh -c 'XAPP_FORCE_GTKWINDOW_ICON=yt_music firefox -no-remote -P \"youtube-music\" --name Youtube-Music' > /dev/null 2>&1 &",
+            workspace_name="Browser",
+            key="d",
+        ),
+        Target(
+            app_id="google-chrome",
+            command_open="com.google.Chrome",
+            workspace_name="Browser",
+            key="w",
+        ),
+        Target(app_id="firefox", workspace_name="Browser", key="q"),
         Target(app_id="code", workspace_name="Code", key="a"),
         Target(
             app_id="Windsurf", command_open="windsurf", workspace_name="Code", key="s"
@@ -97,7 +109,12 @@ def main():
             workspace_name="Mail",
             key="a",
         ),
-        Target(app_id="com.mitchellh.ghostty.note", workspace_name="Note", key="a"),
+        Target(
+            app_id="com.mitchellh.ghostty.note",
+            workspace_name="Note",
+            key="a",
+            command_open='nohup ghostty --class=com.mitchellh.ghostty.note -e sh -c "tmuxp load -d note-taking && tmux attach -t note-taking" >/dev/null 2>&1 &',
+        ),
         Target(app_id="obsidian", workspace_name="Note", key="s"),
         Target(
             app_id="Spotify",
@@ -122,7 +139,9 @@ def main():
     print(f"list window: {list_windows}")
     print(f"list_workspace: {list_workspace}")
     if key in ("\r", "\n"):
-        subprocess.run(["niri", "msg", "action", "focus-workspace", f"File"])
+        subprocess.run(
+            ["niri", "msg", "action", "focus-workspace", f"{workspace_argument}"]
+        )
     for target in list_target:
         if key == target.key and workspace_argument == target.workspace_name:
             go_to_target_window(
@@ -211,17 +230,27 @@ def go_to_target_window(target: Target, list_windows, list_workspace):
             ]
         )
     else:
-
-        subprocess.run(
-            [
-                "niri",
-                "msg",
-                "action",
-                "spawn",
-                "--",
-                f"{target.command_open if target.command_open else target.app_id}",
-            ]
-        )
+        ## CUSTOM DESKTOP APP MUST SETUP HERE
+        if target.app_id == "com.mitchellh.ghostty.note":
+            if target.command_open is not None:
+                subprocess.run(target.command_open, shell=True)
+        elif target.app_id == "Ai-Chat":
+            if target.command_open is not None:
+                subprocess.run(target.command_open, shell=True)
+        elif target.app_id == "Youtube-Music":
+            if target.command_open is not None:
+                subprocess.run(target.command_open, shell=True, executable="/bin/zsh")
+        else:
+            subprocess.run(
+                [
+                    "niri",
+                    "msg",
+                    "action",
+                    "spawn",
+                    "--",
+                    f"{target.command_open if target.command_open else target.app_id}",
+                ]
+            )
 
 
 if __name__ == "__main__":

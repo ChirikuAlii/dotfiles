@@ -1,0 +1,23 @@
+max-visible=1
+anchor=top-right
+font=ProFont IIx Nerd Font
+icons=1
+
+markup=1
+
+padding=5
+
+background-color=#2C2A24
+progress-color=#D08B57
+text-color=#EBDBB2
+
+border-color=#D08B57
+border-size=3
+border-radius=4
+margin=22,22,12,16
+max-icon-size=32
+
+on-notify=exec paplay ~/.local/share/sounds/Steam/stereo/message.ogg 
+
+[mode=do-not-disturb]
+invisible=1

@@ -31,6 +31,6 @@
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
   <property name="last-sort-column" type="string" value="THUNAR_COLUMN_NAME"/>
   <property name="last-sort-order" type="string" value="GTK_SORT_ASCENDING"/>
-  <property name="last-details-view-column-widths" type="string" value="50,50,250,50,50,1189,50,50,1236,50,50,76,50,155"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,255,50,50,1189,50,50,1166,50,50,75,50,221"/>
   <property name="last-compact-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_75_PERCENT"/>
 </channel>

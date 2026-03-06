@@ -70,9 +70,37 @@ ZSH_THEME="bira"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-vi-mode fzf fzf-tab sdk ssh pass)
+plugins=(git zsh-vi-mode fzf fzf-tab sdk ssh pass zsh-autosuggestions zsh-syntax-highlighting)
+
+
+#zsh completion
+# Aktifkan Generic Completion untuk perintah dengan flag -h / --help
+fpath=(~/.zsh/completions $fpath)
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
+_safe_gnu_generic() {
+  # Jalankan _gnu_generic tapi buang stderr (pesan error) ke /dev/null
+  _gnu_generic "$@" 2>/dev/null
+}
+
+# Gunakan wrapper yang aman sebagai default
+compdef _safe_gnu_generic -default-
+# compdef _gnu_generic -default-
+
+zstyle ':completion:*' menu select
+
+# Tampilkan deskripsi untuk opsi (flags) dan perintah
+zstyle ':completion:*' verbose yes
+
+# Format tampilan deskripsi (tampilan grup)
+zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format '%F{purple}-- %d --%f'
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+# Memisahkan grup antara perintah, file, dan opsi
+zstyle ':completion:*' group-name ''
+
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -108,8 +136,9 @@ export PATH="$HOME/.fzf/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export QT_SELECT=6
 export EDITOR='nvim'
+export PATH=$PATH:"~/.spicetify"
+export MANPAGER="nvim +Man!"
 export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm() {
   unset -f nvm node npm npx
@@ -134,10 +163,9 @@ npx() {
   source "$NVM_DIR/nvm.sh"
   npx "$@"
 }
-export PATH="/$HOME/fvm/bin:$PATH"
-alias flutter="fvm flutter"
-fpath=(~/.zsh/completions $fpath)
-autoload -U compinit && compinit
+export PATH="$PATH:/$HOME/Android/sdk/emulator"
+export PATH="$PATH:/$HOME/Android/sdk/platform-tools"
+export PATH="$PATH:/$HOME/Application/flutter-sdk/3.29.3/flutter/bin"
 
 show_color() {
   perl -e 'foreach $a(@ARGV){print "\e[48:2::".join(":",unpack("C*",pack("H*",$a)))."m  \e[49m "};print "\n"' "$@"
@@ -173,6 +201,9 @@ if [ -f "$HOME/.env.local" ]; then
     source "$HOME/.env.local"
 fi
 
-
 alias seeapp='ls /usr/share/applications/*.desktop'
 alias seeappflatpak='flatpak list --app --columns=application'
+alias aichat='sh -c "XAPP_FORCE_GTKWINDOW_ICON=artificial_intelligence firefox -no-remote -P \"ai-chat\" --name Ai-Chat" > /dev/null 2>&1 &'
+alias ytmusic='sh -c "XAPP_FORCE_GTKWINDOW_ICON=yt_music firefox -no-remote -P \"youtube-music\" --name Youtube-Music" > /dev/null 2>&1 &'
+
+export PATH=$PATH:/home/chirikualii/.spicetify

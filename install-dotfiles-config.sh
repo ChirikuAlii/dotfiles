@@ -33,6 +33,9 @@ STOW_FOLDERS=(
     "systemd"
     "wallpapers"
     "waybar"
+    "desktop"
+    "mako"
+    "rofi"
 )
 
 for folder in "${STOW_FOLDERS[@]}"; do
@@ -49,6 +52,11 @@ log "Stowing $folder..."
 stow -v -R -t "$HOME" "$folder" 
 cd "$DOTFILES"
 
+cd "$DOTFILES/scripts"
+folder="rofi"
+log "Stowing $folder..."
+stow -v -R -t "$HOME" "$folder" 
+cd "$DOTFILES"
 
 cd "$DOTFILES/scripts"
 folder="niri-window-title"
