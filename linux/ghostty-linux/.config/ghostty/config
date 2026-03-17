@@ -10,7 +10,7 @@ background= "#2C2A29"
 keybind = super+r=reload_config
 #gtk-titlebar=false
 #window-decoration = false
-window-padding-x = 0
+window-padding-x = 8
 window-padding-y = 4,0
 
 shell-integration = zsh
@@ -46,4 +46,4 @@ keybind = super+2=unbind
 keybind = super+3=unbind
 keybind = super+4=unbind
 
-font-size = 13
+font-size = 12

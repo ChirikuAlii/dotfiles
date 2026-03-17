@@ -93,7 +93,7 @@ layout { // Set gaps around windows in logical pixels.
     }
 }
 
-
+spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
 spawn-at-startup "sh" "-c" "$HOME/.local/bin/wallpaper.sh"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "sh"  "-c" "waybar -c $XDG_CONFIG_HOME/waybar/config.jsonc" 
