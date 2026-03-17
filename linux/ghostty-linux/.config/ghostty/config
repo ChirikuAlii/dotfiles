@@ -4,6 +4,8 @@ theme = Gruvbox Dark
 macos-option-as-alt = true
 #background-blur = true
 background= "#2C2A29"
+background-opacity = 0.8
+background-blur-radius = 20
 # window-padding-balance = true
 # background-opacity = 0.80 
 #keybind = ctrl+n=new_window
