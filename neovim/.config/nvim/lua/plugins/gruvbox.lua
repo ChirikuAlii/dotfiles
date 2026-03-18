@@ -162,5 +162,16 @@ return {
     -- for group, opts in pairs(highlights) do
     --   vim.api.nvim_set_hl(0, group, opts)
     -- end
+
+
+    local function set_transparent()
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+      vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+      -- Tambahkan elemen lain jika masih ada yang terasa 'kotak'
+    end
+
+    set_transparent()
   end,
 }
