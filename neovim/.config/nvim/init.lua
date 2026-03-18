@@ -28,12 +28,17 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set laststatus=3")
 
+vim.keymap.set('n', '<A-Up>', ':resize +2<CR>')
+vim.keymap.set('n', '<A-Down>', ':resize -2<CR>')
+vim.keymap.set('n', '<A-Left>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<A-Right>', ':vertical resize +2<CR>')
+
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>", {
   noremap = true,
   silent = true,
   desc = "V Split",
 })
-
+vim.lsp.set_log_level("debug")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>", {
   noremap = true,
   silent = true,

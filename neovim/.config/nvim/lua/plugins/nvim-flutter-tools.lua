@@ -18,10 +18,29 @@ return {
         enabled = true
       },
 
+      dev_tools = {
+        autostart = false,
+        auto_open_browser = true
+      },
+
+      dev_log = {
+        enabled = true,
+        -- open_cmd = "enew", -- command to use to open the log buffer
+      },
+
       lsp = {
         color = {
           enabled = true,
           background = true
+
+
+        },
+        on_attach = {
+          vim.keymap.set("n", "<leader>lo", ":FlutterOutlineToggle<CR>", {
+            noremap = true,
+            silent = true,
+            desc = "Show Flutter Outline Toogle",
+          })
         }
       }
     }) -- use defaults
