@@ -76,7 +76,7 @@ return {
       -- Setup ts_ls untuk TypeScript/JavaScript
       require("lspconfig").ts_ls.setup({
         capabilities = capabilities,
-        single_file_support = false,
+        single_file_support = true,
         settings = {
           typescript = {
             inlayHints = {

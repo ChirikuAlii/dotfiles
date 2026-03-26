@@ -19,6 +19,7 @@ local colors = {
 vim.opt.relativenumber = true
 vim.o.statuscolumn = "%s %l %r "
 vim.g.mapleader = ";"
+vim.opt.swapfile = false
 
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
