@@ -152,6 +152,14 @@ window-rule {
     }
 }
 
+
+window-rule {
+    match app-id="Logseq"
+    default-column-width {}
+    open-on-workspace "Note"
+    open-maximized true
+}
+
 window-rule {
     match app-id="foot"
     open-floating true
