@@ -163,8 +163,9 @@ npx() {
   source "$NVM_DIR/nvm.sh"
   npx "$@"
 }
-export PATH="$PATH:/$HOME/Android/sdk/emulator"
-export PATH="$PATH:/$HOME/Android/sdk/platform-tools"
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:/$HOME/Application/flutter-sdk/3.29.3/flutter/bin"
 
 show_color() {
@@ -207,3 +208,7 @@ alias aichat='sh -c "XAPP_FORCE_GTKWINDOW_ICON=artificial_intelligence firefox -
 alias ytmusic='sh -c "XAPP_FORCE_GTKWINDOW_ICON=yt_music firefox -no-remote -P \"youtube-music\" --name Youtube-Music" > /dev/null 2>&1 &'
 
 export PATH=$PATH:/home/chirikualii/.spicetify
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

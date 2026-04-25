@@ -131,6 +131,24 @@ return {
           },
         },
       })
+
+
+      require("lspconfig").emmet_language_server.setup({
+        -- Tambahkan filetypes agar aktif di React
+        filetypes = {
+          "css", "eruby", "html", "javascript", "typescript", "javascriptreact",
+          "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue"
+        },
+        -- Opsional: Jika ingin mengubah perilaku emmet
+        init_options = {
+          html = {
+            options = {
+              -- Contoh: Gunakan self-closing tag untuk JSX
+              ["bem.enabled"] = true,
+            },
+          },
+        }
+      })
       -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
